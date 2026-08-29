@@ -96,8 +96,14 @@
           <li>Surah headers drawn with the mushaf's own ornament art</li>
         </ul>
       </div>
-      <div class="pic device"><div class="screen">
-        <img src="assets/flow.png" alt="A surah transition with basmallah"></div>
+      <div class="pic">
+        <div class="seg" id="lineseg">
+          <button data-n="3">3 lines</button><button data-n="4" class="on">4 lines</button><button data-n="5">5 lines</button>
+        </div>
+        <div class="device"><div class="screen">
+          <img id="linesimg" class="fadeable" src="assets/lines4.png"
+               alt="The same page at three, four, or five lines per view"></div>
+        </div>
       </div>
     </div>
 
@@ -126,8 +132,14 @@
           Your memorization state is saved on the device, expressed in
           ayahs, portable across every future version.</p>
         </div>
-        <div class="device"><div class="screen">
-          <img src="assets/reading.png" alt="Reading view"></div>
+        <div>
+          <div class="device"><div class="screen">
+            <img id="hifzimg" class="fadeable" src="assets/hifz-hidden.png"
+                 alt="Hifz mode: lines hidden, half revealed, fully shown"></div>
+          </div>
+          <div class="stage-dots" id="hifzdots">
+            <span class="on">hide</span><span>reveal</span><span>check</span>
+          </div>
         </div>
       </div>
     </div>
@@ -170,5 +182,34 @@
     <p>&copy; 2026 Pocket Mushaf &middot; in development</p>
   </div>
 </footer>
+<script>
+// hifz stages: hide -> reveal -> check, on a slow loop
+(() => {
+  const frames = ['hifz-hidden', 'hifz-half', 'hifz-shown'];
+  const img = document.getElementById('hifzimg');
+  const dots = document.querySelectorAll('#hifzdots span');
+  let i = 0;
+  setInterval(() => {
+    i = (i + 1) % frames.length;
+    img.style.opacity = 0;
+    setTimeout(() => {
+      img.src = 'assets/' + frames[i] + '.png';
+      img.style.opacity = 1;
+    }, 250);
+    dots.forEach((d, j) => d.classList.toggle('on', j === i));
+  }, 2200);
+})();
+// lines-per-view toggle
+(() => {
+  const img = document.getElementById('linesimg');
+  document.querySelectorAll('#lineseg button').forEach(b => {
+    b.addEventListener('click', () => {
+      document.querySelectorAll('#lineseg button').forEach(x => x.classList.remove('on'));
+      b.classList.add('on');
+      img.src = 'assets/lines' + b.dataset.n + '.png';
+    });
+  });
+})();
+</script>
 </body>
 </html>
