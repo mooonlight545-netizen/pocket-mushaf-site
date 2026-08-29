@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'">
 <title>Flash | Pocket Mushaf</title>
 <meta name="description" content="Install or update Pocket Mushaf firmware over USB, straight from the browser.">
+<link rel="canonical" href="https://pocketmushaf.com/flash.html">
 <link rel="stylesheet" href="fonts/fonts.css">
 <link rel="stylesheet" href="style.css">
 <script type="module" src="vendor/esp-web-tools/install-button.js"></script>
@@ -41,6 +42,11 @@
       serial console at 115200 baud.</span></li>
     </ol>
 
+    <p class="note" style="max-width:620px">When you click Install, your
+    browser shows its standard serial-port permission dialog. Every
+    web-based flasher triggers the same dialog, including the chip
+    maker's own. It grants this page access to one USB device that you
+    pick, nothing more, and only until the tab closes.</p>
     <div class="flash-box">
       <strong>Pocket Mushaf firmware</strong>
       <div class="note" id="fw-version">Version: see manifest</div>
