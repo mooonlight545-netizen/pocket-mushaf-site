@@ -66,10 +66,10 @@ nav a.pill:hover { background: var(--green); color: #fff; }
 .btn.ghost:hover { border-color: var(--green); color: var(--green); }
 .btn.disabled { opacity: 0.5; pointer-events: none; }
 
-/* ---------- device mockup ---------- */
+/* ---------- device mockup: screen + front d-pad, power right, USB-C left */
 .device {
   background: linear-gradient(145deg, #35302a, #211d18);
-  border-radius: 26px; padding: 20px 20px 30px;
+  border-radius: 26px; padding: 18px 18px 92px;
   box-shadow: 0 30px 70px rgba(22, 19, 14, 0.35), inset 0 1px 0 rgba(255,255,255,0.09);
   position: relative;
 }
@@ -78,19 +78,43 @@ nav a.pill:hover { background: var(--green); color: #fff; }
   box-shadow: inset 0 0 0 1px rgba(0,0,0,0.5), inset 0 4px 14px rgba(0,0,0,0.22);
 }
 .device .screen img { display: block; width: 100%; height: auto; }
-.device::before {  /* page back / page forward buttons */
-  content: ""; position: absolute; right: -9px; top: 26%;
-  width: 10px; height: 46px; border-radius: 5px;
-  background: linear-gradient(90deg, #524a40, #2e2922);
-  box-shadow: 0 58px 0 0 #453f36, 2px 0 6px rgba(0, 0, 0, 0.4);
+.device .dpad {
+  position: absolute; left: 50%; bottom: 12px; transform: translateX(-50%);
+  width: 70px; height: 70px;
 }
-.device::after {   /* select button, set apart */
-  content: ""; position: absolute; right: -8px; top: calc(26% + 132px);
-  width: 9px; height: 30px; border-radius: 5px;
-  background: linear-gradient(90deg, #4a443c, #2b2721);
+.device .dpad i {
+  position: absolute; width: 21px; height: 21px; border-radius: 6px;
+  background: linear-gradient(#4f473d, #2c2721);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.14), 0 2px 4px rgba(0,0,0,0.55);
 }
-.hero .device { transform: rotate(-1.6deg); }
-.hero .device:hover { transform: rotate(0deg); transition: transform 0.35s ease; }
+.device .dpad .u { left: 24.5px; top: 0; }
+.device .dpad .d { left: 24.5px; bottom: 0; }
+.device .dpad .l { left: 0; top: 24.5px; }
+.device .dpad .r { right: 0; top: 24.5px; }
+.device .pwr {  /* power on the right side */
+  position: absolute; right: -7px; top: 24%;
+  width: 8px; height: 54px; border-radius: 4px;
+  background: linear-gradient(90deg, #554c41, #2c2721);
+  box-shadow: 2px 0 5px rgba(0,0,0,0.4);
+}
+.device .usb {  /* USB-C slot on the left side */
+  position: absolute; left: -6px; top: 40%;
+  width: 6px; height: 34px; border-radius: 3px;
+  background: #0c0a08; box-shadow: inset 0 0 4px #000;
+}
+/* angled pseudo-3D views */
+.device.tilt-r {
+  transform: perspective(1200px) rotateY(-16deg) rotateX(3deg);
+  box-shadow: 16px 12px 0 -4px #16120e, 34px 26px 60px rgba(22,19,14,0.4);
+}
+.device.tilt-l {
+  transform: perspective(1200px) rotateY(16deg) rotateX(3deg);
+  box-shadow: -16px 12px 0 -4px #16120e, -34px 26px 60px rgba(22,19,14,0.4);
+}
+.device.tilt-r .pwr { right: -10px; width: 12px; }
+.device.tilt-l .usb { left: -10px; width: 10px; background: #060504; }
+.hero .device { transition: transform 0.35s ease; }
+.hero .device:hover { transform: perspective(1200px) rotateY(-8deg) rotateX(2deg); }
 
 /* ---------- ticker band ---------- */
 .band {
@@ -156,6 +180,23 @@ section p.sub { color: var(--ink-soft); max-width: 620px; margin-top: 16px; font
 .steps li strong { display: block; font-size: 1.05rem; margin-bottom: 2px; }
 .steps li span { color: var(--ink-soft); font-size: 0.98rem; }
 code { font-family: "SF Mono", Menlo, monospace; font-size: 0.88em; background: var(--paper-deep); padding: 2px 7px; border-radius: 5px; }
+
+/* ---------- three-up device renders ---------- */
+.devrow {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 46px;
+  margin-top: 56px; align-items: start;
+}
+.devrow figure { margin: 0; }
+.devrow .device { padding: 12px 12px 62px; border-radius: 20px; }
+.devrow .dpad { width: 54px; height: 54px; bottom: 8px; }
+.devrow .dpad i { width: 16px; height: 16px; border-radius: 5px; }
+.devrow .dpad .u, .devrow .dpad .d { left: 19px; }
+.devrow .dpad .l, .devrow .dpad .r { top: 19px; }
+.devrow figcaption {
+  margin-top: 18px; font-size: 0.92rem; color: var(--ink-soft);
+  text-align: center;
+}
+@media (max-width: 860px) { .devrow { grid-template-columns: 1fr; gap: 60px; } }
 
 /* ---------- segmented toggle + stage dots ---------- */
 .seg { display: inline-flex; background: var(--paper-deep); border: 1px solid var(--rule);
