@@ -300,3 +300,24 @@ footer a { color: var(--green); text-decoration: none; }
   .contrast { grid-template-columns: 1fr; }
   .vs { text-align: center; }
 }
+
+/* phone wallpaper + centered vs */
+.pscreen.wall {
+  background: linear-gradient(165deg, #a8c8f0 0%, #c6b5ec 45%, #eec3d8 100%);
+}
+.ptime {
+  position: absolute; top: 34%; left: 0; right: 0; text-align: center;
+  font-family: "Space Grotesk", sans-serif; font-weight: 700;
+  font-size: 2.6rem; color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+.contrast { grid-template-columns: 1fr auto 1fr; }
+.vs { justify-self: center; text-align: center; }
+
+/* updates row: steps + usb illustration */
+.updrow {
+  display: grid; grid-template-columns: 1fr 1.1fr; gap: 56px;
+  align-items: center;
+}
+.updart svg { width: 100%; height: auto; display: block; }
+@media (max-width: 860px) { .updrow { grid-template-columns: 1fr; } }
