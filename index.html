@@ -3,14 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'">
 <title>Pocket Mushaf, a dedicated e-ink Quran reader</title>
 <meta name="description" content="A pocket-sized e-ink device that does one thing: display the authentic Madani mushaf beautifully, and let you resume reading instantly. No apps. No notifications. No distractions.">
 <meta property="og:title" content="Pocket Mushaf">
 <meta property="og:description" content="A dedicated, distraction-free pocket Quran reading device.">
 <meta property="og:image" content="assets/reading.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="fonts/fonts.css">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -263,34 +262,6 @@
     <p>&copy; 2026 Pocket Mushaf &middot; in development</p>
   </div>
 </footer>
-<script>
-// hifz stages: hide -> reveal -> check, on a slow loop
-(() => {
-  const frames = ['hifz-hidden', 'hifz-half', 'hifz-shown'];
-  const img = document.getElementById('hifzimg');
-  const dots = document.querySelectorAll('#hifzdots span');
-  let i = 0;
-  setInterval(() => {
-    i = (i + 1) % frames.length;
-    img.style.opacity = 0;
-    setTimeout(() => {
-      img.src = 'assets/' + frames[i] + '.png';
-      img.style.opacity = 1;
-    }, 250);
-    dots.forEach((d, j) => d.classList.toggle('on', j === i));
-  }, 2200);
-})();
-// lines-per-view toggle
-(() => {
-  const img = document.getElementById('linesimg');
-  document.querySelectorAll('#lineseg button').forEach(b => {
-    b.addEventListener('click', () => {
-      document.querySelectorAll('#lineseg button').forEach(x => x.classList.remove('on'));
-      b.classList.add('on');
-      img.src = 'assets/lines' + b.dataset.n + '.png';
-    });
-  });
-})();
-</script>
-</body>
+<script src="assets/site.js" defer></script>
+</body></body>
 </html>

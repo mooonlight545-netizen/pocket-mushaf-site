@@ -3,13 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'">
 <title>Flash | Pocket Mushaf</title>
 <meta name="description" content="Install or update Pocket Mushaf firmware over USB, straight from the browser.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="fonts/fonts.css">
 <link rel="stylesheet" href="style.css">
-<script type="module" src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js"></script>
+<script type="module" src="vendor/esp-web-tools/install-button.js"></script>
 </head>
 <body>
 <header class="site">
@@ -51,6 +50,22 @@
       partitions and are untouched by updates.</p>
     </div>
 
+    <h2 style="margin-top:56px">Verify your download</h2>
+    <p class="sub">Everything served here is self-hosted and signed. The
+    <a href="security/checksums.txt">checksums file</a> lists the SHA-256 of
+    every firmware file, and
+    <a href="security/checksums.txt.sig">its signature</a> proves the list
+    came from the maintainer's key
+    (<a href="security/signing-key.pub">public key</a>). To check:</p>
+    <ol class="steps">
+      <li><strong>Checksums</strong><span><code>shasum -a 256 -c
+        checksums.txt</code> next to your downloads.</span></li>
+      <li><strong>Signature</strong><span><code>ssh-keygen -Y verify -f
+        allowed_signers -I release@pocketmushaf -n file -s
+        checksums.txt.sig &lt; checksums.txt</code> using
+        <a href="security/allowed_signers">allowed_signers</a>.</span></li>
+    </ol>
+
     <h2 style="margin-top:56px">Font card restore</h2>
     <p class="sub">The full mushaf font set lives on the device's memory
     card. If a card is ever lost or corrupted, a downloadable restore
@@ -68,11 +83,6 @@
       Quran Printing Complex via Tarteel QUL. Rendering by FreeType.</p>
     </div>
   </footer>
-<script>
-fetch('./manifest.json').then(r => r.json()).then(m => {
-  document.getElementById('fw-version').textContent =
-      'Version: ' + m.version + ' (' + m.builds[0].chipFamily + ')';
-}).catch(() => {});
-</script>
-</body>
+<script src="assets/flash.js" defer></script>
+</body></body>
 </html>
