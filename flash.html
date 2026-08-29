@@ -5,22 +5,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Flash — Pocket Mushaf</title>
 <meta name="description" content="Install or update Pocket Mushaf firmware over USB, straight from the browser.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <script type="module" src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js"></script>
 </head>
 <body>
-<div class="wrap">
-  <header class="site">
-    <a class="brand" href="./">Pocket Mushaf</a>
+<header class="site">
+  <div class="wrap navrow">
+    <a class="brand" href="./">pocket<span>mushaf</span></a>
     <nav>
       <a href="./#why">Why</a>
       <a href="./#hifz">Hifz</a>
       <a href="./#updates">Updates</a>
-      <a href="flash.html">Flash</a>
+      <a class="pill" href="flash.html">Flash device</a>
     </nav>
-  </header>
-
+  </div>
+</header>
+<div class="wrap">
   <section>
+    <span class="kicker">Web Serial flasher</span>
     <h2>Install firmware over USB</h2>
     <p class="sub">Works from Chrome or Edge on any desktop — no software to
     install. Today this flashes the <strong>devkit bring-up build</strong>
@@ -28,12 +33,13 @@
     same way.</p>
 
     <ol class="steps">
-      <li>Connect the board with a USB-C <em>data</em> cable (many bundled
-      cables are charge-only). Use the port labeled <code>USB</code> on the
-      DevKitC.</li>
-      <li>Click Install below and pick the serial port that appears.</li>
-      <li>When it finishes, the boot log prints on the serial console at
-      115200 baud.</li>
+      <li><strong>Connect</strong><span>Use a USB-C <em>data</em> cable (many
+      bundled cables are charge-only) into the port labeled
+      <code>USB</code> on the DevKitC.</span></li>
+      <li><strong>Install</strong><span>Click below and pick the serial port
+      that appears.</span></li>
+      <li><strong>Watch it boot</strong><span>The boot log prints on the
+      serial console at 115200 baud.</span></li>
     </ol>
 
     <div class="flash-box">
@@ -54,12 +60,14 @@
     </div>
   </section>
 
+  </div>
   <footer>
-    <p>Firmware is published from tagged releases of the Pocket Mushaf
-    repository. Qur'an data and QPC fonts by the King Fahd Glorious
-    Qur'an Printing Complex via Tarteel QUL. Rendering by FreeType.</p>
+    <div class="wrap">
+      <p>Firmware is published from tagged releases of the Pocket Mushaf
+      repository. Qur'an data and QPC fonts by the King Fahd Glorious
+      Qur'an Printing Complex via Tarteel QUL. Rendering by FreeType.</p>
+    </div>
   </footer>
-</div>
 <script>
 fetch('./manifest.json').then(r => r.json()).then(m => {
   document.getElementById('fw-version').textContent =
