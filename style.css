@@ -321,3 +321,15 @@ footer a { color: var(--green); text-decoration: none; }
 }
 .updart svg { width: 100%; height: auto; display: block; }
 @media (max-width: 860px) { .updrow { grid-template-columns: 1fr; } }
+
+/* ---------- zoomed status-line strip ---------- */
+.stripfig { margin: 84px 0 0; }
+.stripbox {
+  background: #fffdf8; border: 1px solid var(--rule); border-radius: var(--radius);
+  padding: 26px 30px; box-shadow: 0 16px 40px rgba(22, 19, 14, 0.08);
+  overflow-x: auto;
+}
+.stripbox img { display: block; max-width: 100%; height: auto; margin: 0 auto; }
+.stripfig figcaption {
+  margin-top: 16px; text-align: center; font-size: 0.95rem; color: var(--ink-soft);
+}

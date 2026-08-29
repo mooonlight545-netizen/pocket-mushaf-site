@@ -25,3 +25,15 @@
     });
   });
 })();
+
+// edition toggle
+(() => {
+  const img = document.getElementById('edimg');
+  document.querySelectorAll('#edseg button').forEach(b => {
+    b.addEventListener('click', () => {
+      document.querySelectorAll('#edseg button').forEach(x => x.classList.remove('on'));
+      b.classList.add('on');
+      img.src = 'assets/edition-' + b.dataset.ed + '.png';
+    });
+  });
+})();
