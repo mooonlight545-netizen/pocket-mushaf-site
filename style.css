@@ -397,13 +397,13 @@ footer .footgrid { display: grid; grid-template-columns: 1.1fr auto 1.4fr; gap: 
 .zoomwrap .device { padding-bottom: 58px; }
 .zoomtarget {  /* outline on the real status line being magnified */
   position: absolute; left: 50%; transform: translateX(-50%);
-  bottom: 62px; width: 46%; height: 24px;
+  bottom: 56px; width: 27%; height: 19px;
   border: 2px solid var(--green); border-radius: 8px;
   pointer-events: none;
 }
 .zoomtarget::after {  /* short leader down toward the loupe */
-  content: ""; position: absolute; left: 50%; bottom: -34px;
-  width: 2px; height: 32px; background: var(--green);
+  content: ""; position: absolute; left: 50%; bottom: -30px;
+  width: 2px; height: 28px; background: var(--green);
   transform: translateX(-50%);
 }
 .loupe {
