@@ -94,11 +94,12 @@ nav a.pill:hover { background: var(--green); color: #fff; }
 .device .dpad .d::after { border-top-color: #9b9184; border-bottom-width: 0; }
 .device .dpad .l::after { border-right-color: #9b9184; border-left-width: 0; }
 .device .dpad .r::after { border-left-color: #9b9184; border-right-width: 0; }
-.device .pwr {  /* power on the right side */
-  position: absolute; right: -7px; top: 24%;
-  width: 8px; height: 54px; border-radius: 4px;
+.device .pwr {  /* power on the right side: flat against the body,
+                            rounded only on its outer edge */
+  position: absolute; right: -8px; top: 24%;
+  width: 8px; height: 54px; border-radius: 0 5px 5px 0;
   background: linear-gradient(90deg, #554c41, #2c2721);
-  box-shadow: 2px 0 5px rgba(0,0,0,0.4);
+  box-shadow: 2px 1px 4px rgba(0,0,0,0.35);
 }
 .device .usb {  /* USB-C slot on the left side */
   position: absolute; left: -6px; top: 40%;
@@ -125,8 +126,12 @@ nav a.pill:hover { background: var(--green); color: #fff; }
     -10px 7px 0 #130f0c, -11px 7px 0 #120f0b, -12px 8px 0 #110e0b,
     -26px 30px 55px rgba(22, 19, 14, 0.38);
 }
-.device.tilt-r .pwr { right: -16px; width: 12px; background: linear-gradient(90deg, #5a5145, #241f1a); }
-.device.tilt-l .usb { left: -15px; width: 9px; background: #050403; box-shadow: inset 0 0 5px #000; }
+.device.tilt-r .pwr { right: -14px; width: 14px; border-radius: 0 6px 6px 0; background: linear-gradient(90deg, #5a5145, #241f1a); }
+.device.tilt-l .usb {  /* a USB-C port: inset stadium slot with a rim */
+  left: -11px; top: 44%; width: 8px; height: 30px; border-radius: 4px;
+  background: #080604;
+  box-shadow: inset 0 0 0 2px #453e34, inset 0 0 5px #000;
+}
 .device .usb { display: none; }           /* the port is an edge feature */
 .device.tilt-l .usb { display: block; }   /* visible only when that edge shows */
 .hero .device { transition: transform 0.35s ease; }
