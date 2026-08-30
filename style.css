@@ -352,7 +352,7 @@ a:focus-visible, button:focus-visible {
 }
 footer .footgrid { display: grid; grid-template-columns: 1.1fr auto 1.4fr; gap: 56px; }
 .footgrid .tag { margin-top: 10px; }
-.fnav { display: flex; flex-direction: column; gap: 8px; }
+.fnav { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; text-align: left; }
 .fnav a { color: var(--ink-soft); text-decoration: none; }
 .fnav a:hover { color: var(--green); }
 .fcredits .copy { margin-top: 14px; }
