@@ -252,8 +252,6 @@ footer {
   margin-top: 80px; border-top: 1px solid var(--rule);
   padding: 40px 0 60px; font-size: 0.88rem; color: var(--ink-soft);
 }
-footer .wrap { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; }
-@media (max-width: 700px) { footer .wrap { grid-template-columns: 1fr; } }
 footer p { max-width: 560px; }
 footer a { color: var(--green); text-decoration: none; }
 
@@ -347,13 +345,16 @@ html, body { overflow-x: clip; }
 a:focus-visible, button:focus-visible {
   outline: 3px solid var(--green); outline-offset: 2px; border-radius: 4px;
 }
-.footgrid { display: grid; grid-template-columns: 1.1fr 0.7fr 1.4fr; gap: 44px; }
+footer .footgrid { display: grid; grid-template-columns: 1.1fr auto 1.4fr; gap: 56px; }
 .footgrid .tag { margin-top: 10px; }
 .fnav { display: flex; flex-direction: column; gap: 8px; }
 .fnav a { color: var(--ink-soft); text-decoration: none; }
 .fnav a:hover { color: var(--green); }
 .fcredits .copy { margin-top: 14px; }
-@media (max-width: 800px) { .footgrid { grid-template-columns: 1fr; gap: 28px; } }
+@media (max-width: 800px) {
+  footer { margin-top: 48px; padding: 26px 0 36px; }
+  footer .footgrid { grid-template-columns: 1fr; gap: 22px; }
+}
 
 @media (max-width: 900px) {
   .device.tilt-l, .device.tilt-r, .hero .device:hover {
@@ -383,4 +384,26 @@ a:focus-visible, button:focus-visible {
   .updrow { gap: 34px; }
   .bigcta { padding: 72px 0 24px; }
   .featrow { gap: 36px; margin-top: 44px; }
+}
+
+
+/* ---------- status-line magnifier ---------- */
+.zoomwrap { position: relative; max-width: 780px; margin: 0 auto 74px; }
+.zoomwrap .device { padding-bottom: 58px; }
+.loupe {
+  position: absolute; left: 50%; transform: translateX(-50%);
+  bottom: -66px; width: min(94%, 660px);
+  background: #fffdf8; border: 3px solid var(--ink); border-radius: 999px;
+  padding: 12px 26px; box-shadow: 0 22px 48px rgba(22, 19, 14, 0.28);
+}
+.loupe::before {  /* stem pointing back at the status line */
+  content: ""; position: absolute; top: -26px; left: 50%;
+  transform: translateX(-50%);
+  border: 12px solid transparent; border-bottom-color: var(--ink);
+}
+.loupe img { display: block; width: 100%; height: auto; }
+.stripfig figcaption { margin-top: 10px; }
+@media (max-width: 640px) {
+  .loupe { padding: 8px 14px; bottom: -52px; }
+  .zoomwrap { margin-bottom: 60px; }
 }
